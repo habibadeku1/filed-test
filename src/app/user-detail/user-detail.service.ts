@@ -8,10 +8,8 @@ export interface IResponse {
   message: string
 }
 
-@Injectable({
-  providedIn: 'root'
-})
-export class UserService {
+@Injectable()
+export class UserDetailService {
 
   private apiUrl = "http://localhost:3000/users/";
   constructor(private http: HttpClient) { }

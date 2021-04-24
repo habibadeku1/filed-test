@@ -4,14 +4,15 @@ import { Actions, createEffect, ofType} from '@ngrx/effects';
 import { Observable, of } from 'rxjs';
 import { catchError, map, mergeMap } from 'rxjs/operators';
 import * as UserActions from '../actions/user.actions';
+import { AppService } from '../app.service';
 import { UserModel } from '../models/user.model';
-import { UserService } from '../services/user.service';
+import { UserDetailService } from '../user-detail/user-detail.service';
 
 
 @Injectable()
 export class UserEffects {
 
-  constructor(private action$: Actions, private userService: UserService, private router: Router) {}
+  constructor(private action$: Actions, private userService: UserDetailService, private router: Router, private appService: AppService) {}
 
   addUserDetails$ = createEffect((): Observable<any> =>
     this.action$.pipe(
@@ -22,18 +23,17 @@ export class UserEffects {
             map((response) => {
               let returnAction;
               if (response.body.status != 'success') {
-                this.snackBarService.showBar(
+                this.appService.showSnack(
+                  'FAILURE: User details entry failed!',
+                  'close',
                   'error',
-                  'FAILURE',
-                  'User details entry failed!'
                 );
-                this.router.navigate(['']);
                 returnAction = UserActions.addUserDetailsError({ error: 'There was an error adding the user details' });
               } else if (response.body.status === 'success') {
-                this.snackBarService.showBar(
+                this.appService.showSnack(
+                  'SUCCESSFUL: User details entry successful!',
+                  'close',
                   'success',
-                  'SUCCESSFUL',
-                  'User details entry successful!'
                 );
                 this.router.navigate(['']);
                 returnAction = UserActions.addUserDetailsSuccess({ data: action.data });

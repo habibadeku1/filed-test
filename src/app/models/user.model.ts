@@ -3,5 +3,5 @@ export class UserModel {
     lastName: string = '';
     email: string = '';
     monthAdvertBudget: number = 0;
-    phoneNumber: string = '';
+    phone: string = '';
 }

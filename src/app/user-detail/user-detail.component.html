@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="left-area">
+      <h1>Filed</h1>
+      <h3>Book a demo today and get two weeks free.</h3>
+
+    </div>
+    <div class="right-area">
+      <mat-card>
+        <h4>Fill out form</h4>
+        <mat-divider></mat-divider>
+        <form name="userDetailForm" [formGroup]="userDetailForm">
+            <div class="two-fields">
+                <mat-form-field appearance="fill">
+                    <mat-label>First name</mat-label>
+                    <input formControlName="firstName" matInput>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Last name</mat-label>
+                    <input formControlName="lastName" matInput>
+                </mat-form-field>
+            </div>      
+            <div class="one-field">
+                <mat-form-field appearance="fill">
+                    <mat-label>Work Email</mat-label>
+                    <input formControlName="email" matInput>
+                </mat-form-field>
+            </div>     
+            <div class="one-field">
+                <mat-form-field appearance="fill">
+                    <mat-label>Monthly Advertising Budget</mat-label>
+                    <input type="number" formControlName="monthAdvertBudget" matInput>
+                </mat-form-field>
+            </div>    
+            <div class="one-field">
+                <mat-form-field appearance="fill">
+                    <mat-label>Phone</mat-label>
+                    <input type="tel" formControlName="phone" matInput>
+                </mat-form-field>
+            </div>
+            <div class="two-fields">
+                <button mat-raised-button color="secondary" (click)="resetForm()">Reset</button>
+                <button mat-raised-button color="accent" (click)="addUserDetail()">Submit</button>
+            </div>
+            <h5 *ngIf="userDetailForm.invalid" >{{formErrorMessage}}</h5> 
+        </form>
+      </mat-card>
+    </div>
+</div>

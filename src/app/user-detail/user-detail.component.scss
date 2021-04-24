@@ -1,0 +1,48 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    min-height: 100vh;
+    flex-wrap: wrap;
+    align-content: center;
+    form {
+        margin-top: 30px;
+    }
+    h5 {
+        color: red;
+        margin-top: 10px;
+    }
+}
+.right-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 50px;
+    mat-card {
+        margin-top: 15px;
+    }
+}
+.left-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 50px;
+}
+
+.two-fields {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    mat-form-field {
+        width: 48%;
+    }
+}
+
+.one-field {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    mat-form-field {
+        width: 100%;
+    }
+}
