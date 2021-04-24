@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    min-height: 100vh;
+    /* align-items: center; */
+    flex-wrap: wrap;
+    align-content: center;
+}
+.right-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px;
+}
+.left-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px;
+}
