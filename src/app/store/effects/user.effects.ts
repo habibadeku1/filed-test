@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType} from '@ngrx/effects';
 import { Observable, of } from 'rxjs';
-import { catchError, map, mergeMap } from 'rxjs/operators';
+import { catchError, concatMap, map, mergeMap, tap, withLatestFrom } from 'rxjs/operators';
 import * as UserActions from '../actions/user.actions';
-import { AppService } from '../app.service';
-import { UserModel } from '../models/user.model';
-import { UserDetailService } from '../user-detail/user-detail.service';
+import { AppService } from '../../app.service';
+import { UserModel } from '../../models/user.model';
+import { UserDetailService } from '../../user-detail/user-detail.service';
 
 
 @Injectable()
@@ -14,7 +14,8 @@ export class UserEffects {
 
   constructor(private action$: Actions, private userService: UserDetailService, private router: Router, private appService: AppService) {}
 
-  addUserDetails$ = createEffect((): Observable<any> =>
+  addUserDetails$ = createEffect(
+    (): Observable<any> =>
     this.action$.pipe(
       ofType(UserActions.addUserDetails),
       mergeMap((action) =>      
@@ -47,6 +48,4 @@ export class UserEffects {
       )
     )
   );
-
 }
-

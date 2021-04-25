@@ -1,4 +1,4 @@
-import {UserModel} from '../models/user.model';
+import {UserModel} from '../../models/user.model';
 
 export interface UserState {
   user: UserModel | null;
@@ -7,15 +7,15 @@ export interface UserState {
 export const initialUserState: UserModel = new UserModel();
 
 export interface UserState {
-  isLoading?: boolean;
-  error?: any;
   userData?: UserModel;
+  isLoading?: boolean;
+  error?: string;
 }
 
 export const initialState: UserState = {
+  user: initialUserState,
   isLoading: false,
-  error: null,
-  user: initialUserState
+  error: null
 };
 
 

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
 import { UserModel } from '../models/user.model';
+import { addUserDetails } from '../store/actions/user.actions'
 
 @Component({
   selector: 'app-user-detail',
@@ -10,7 +12,7 @@ import { UserModel } from '../models/user.model';
 export class UserDetailComponent implements OnInit {
   userDetailForm: FormGroup;
   formErrorMessage: string = 'All fields are required';  
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private store: Store, ) { }
 
   ngOnInit(): void {
     this.buildUserDetailForm();
@@ -31,13 +33,14 @@ export class UserDetailComponent implements OnInit {
       this.formErrorMessage = 'Please try again, form is invalid'
       return;
     } else if (this.userDetailForm.status === 'VALID') {
-      const userDetailObject: UserModel =  {
+      const data: UserModel =  {
         firstName: this.userDetailForm.get('firstName').value,
         lastName: this.userDetailForm.get('lastName').value,
         email: this.userDetailForm.get('email').value,
         monthAdvertBudget: this.userDetailForm.get('monthAdvertBudget').value,
         phone: this.userDetailForm.get('phone').value.toString(),
       }
+      this.store.dispatch(addUserDetails({ data }));
     }
   }
 

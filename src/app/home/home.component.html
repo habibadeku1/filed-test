@@ -1,17 +1,18 @@
 <div class="container">
     <div class="left-area">
-      <h1>Filed User Details Entry</h1>
+      <h1>Filed</h1>
+      <h3>User Details Entry</h3>
     </div>
     <div class="right-area">
       <button mat-raised-button color="primary" (click)="goToPage('user-detail')"><mat-icon>add</mat-icon>Add a new user details</button>
-      <mat-card>
+      <mat-card *ngIf="userData">
         <h3>Submitted User Details:</h3>
-        <mat-list>
-          <mat-list-item> First Name:  </mat-list-item>
-          <mat-list-item> Last Name: </mat-list-item>
-          <mat-list-item> Email: </mat-list-item>
-          <mat-list-item> Monthly Advertising Budget: </mat-list-item>
-          <mat-list-item> Phone Number: </mat-list-item>
+        <mat-list >
+          <mat-list-item> First Name: <strong>{{userData.firstName}}</strong>  </mat-list-item>
+          <mat-list-item> Last Name: <strong>{{userData.lastName}}</strong> </mat-list-item>
+          <mat-list-item> Email: <strong>{{userData.email}}</strong></mat-list-item>
+          <mat-list-item> Monthly Advertising Budget: <strong>{{userData.monthAdvertBudget}}</strong></mat-list-item>
+          <mat-list-item> Phone Number: <strong>{{userData.phone}}</strong></mat-list-item>
         </mat-list>
       </mat-card>
     </div>

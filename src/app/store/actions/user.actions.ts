@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { UserModel } from '../models/user.model';
+import { UserModel } from '../../models/user.model';
 
 export const loadUser = createAction(
   '[User] Load User'
@@ -26,8 +26,9 @@ export const addUserDetailsError = createAction(
 );
 
 export const refreshUser = createAction(
-  '[User] Load User'
+  '[User] Refresh'
 );
+
 
 
 

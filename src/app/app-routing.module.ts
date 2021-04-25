@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { UserDetailResolver } from './user-detail/user-detail.resolver';
 
 const routes: Routes = [
   {
@@ -9,7 +10,10 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomeModule)
+    loadChildren: () => import('./home/home.module').then( m => m.HomeModule),
+    // resolve: {
+    //   userDetail: UserDetailResolver
+    // }
   },
   {
     path: 'user-detail',
